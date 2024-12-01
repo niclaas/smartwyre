@@ -9,7 +9,7 @@ namespace Smartwyre.DeveloperTest.Runner
 {
 	internal class SampleInput
 	{
-        public ICollection<Product>	Products { get; set; }
+		public ICollection<Product> Products { get; set; }
 		public ICollection<Rebate> Rebates { get; set; }
 	}
 }

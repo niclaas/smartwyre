@@ -6,7 +6,7 @@ namespace Smartwyre.DeveloperTest.Services;
 
 public interface IRebateService
 {
-    Task<CalculateRebateResult> CalculateRebate(CalculateRebateRequest request);
+	Task<CalculateRebateResult> CalculateRebate(CalculateRebateRequest request);
 	Task<Rebate> AddRebate(Rebate rebate);
 	Task<IEnumerable<Rebate>> ListRebates();
 

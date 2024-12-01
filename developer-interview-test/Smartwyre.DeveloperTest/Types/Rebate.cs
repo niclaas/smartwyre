@@ -9,12 +9,12 @@
 /// </summary>
 public class Rebate : Entity
 {
-    public IncentiveType Incentive { get; set; }
-    public decimal Amount { get; set; }
-    public decimal Percentage { get; set; }
+	public IncentiveType Incentive { get; set; }
+	public decimal Amount { get; set; }
+	public decimal Percentage { get; set; }
 
-    // Storing amount awarded in the Rebate class, but could
-    // easily be a separated referenced object with details
-    // on date awarded and id of service/user awarding it.
-    public decimal AmountAwarded { get; set; }
+	// Storing amount awarded in the Rebate class, but could
+	// easily be a separated referenced object with details
+	// on date awarded and id of service/user awarding it.
+	public decimal AmountAwarded { get; set; }
 }

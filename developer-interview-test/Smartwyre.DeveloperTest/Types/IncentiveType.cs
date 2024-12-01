@@ -7,7 +7,7 @@ namespace Smartwyre.DeveloperTest.Types;
 [JsonConverter(typeof(StringEnumConverter))]
 public enum IncentiveType
 {
-    FixedRateRebate,
-    AmountPerUom,
-    FixedCashAmount
+	FixedRateRebate,
+	AmountPerUom,
+	FixedCashAmount
 }

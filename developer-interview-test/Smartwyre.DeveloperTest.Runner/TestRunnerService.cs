@@ -24,7 +24,7 @@ namespace Smartwyre.DeveloperTest.Runner
 					string input = textReader.ReadToEnd();
 					var sampleInput = JsonConvert.DeserializeObject<SampleInput>(input);
 
-					foreach(var product in sampleInput.Products)
+					foreach (var product in sampleInput.Products)
 					{
 						await _rebateService.AddProduct(product);
 					}

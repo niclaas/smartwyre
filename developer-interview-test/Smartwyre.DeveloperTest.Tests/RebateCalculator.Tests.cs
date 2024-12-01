@@ -6,26 +6,26 @@ namespace Smartwyre.DeveloperTest.Tests;
 
 public class RebateCalculatorTests
 {
-    [Fact]
-    public void FixedCashCalculator_ShouldCalculate()
-    {
-        // arrange
-        var rebate = new Rebate
-        {
-            Amount = 30,
-            Incentive = IncentiveType.FixedRateRebate
-        };
+	[Fact]
+	public void FixedCashCalculator_ShouldCalculate()
+	{
+		// arrange
+		var rebate = new Rebate
+		{
+			Amount = 30,
+			Incentive = IncentiveType.FixedRateRebate
+		};
 
-        var calculator = new FixedCashRebateCalculator();
+		var calculator = new FixedCashRebateCalculator();
 
-        // action
-        var rebateResult = calculator.CalculateRebate(rebate, null, null);
+		// action
+		var rebateResult = calculator.CalculateRebate(rebate, null, null);
 
-        // assert
-        Assert.NotNull(rebateResult);
+		// assert
+		Assert.NotNull(rebateResult);
 		Assert.True(rebateResult.Success);
 		Assert.Equal(30, rebateResult.RebateAmount);
-    }
+	}
 
 	[Fact]
 	public void FixedCashCalculator_MissingInput_ShouldFail()

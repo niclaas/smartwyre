@@ -15,7 +15,7 @@ public class FixedRateRebateCalculator : IRebateCalculator
 		else
 		{
 			return new CalculateRebateResult
-			{ 
+			{
 				Success = true,
 				RebateAmount = product.Price * rebate.Percentage * request.Volume
 			};

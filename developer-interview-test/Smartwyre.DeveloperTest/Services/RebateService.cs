@@ -10,13 +10,13 @@ namespace Smartwyre.DeveloperTest.Services;
 
 public class RebateService : IRebateService
 {
-    private readonly IServiceProvider _serviceProvider;
+	private readonly IServiceProvider _serviceProvider;
 	private readonly IStore<Product> _productStore;
 	private readonly IStore<Rebate> _rebateStore;
 
 	public RebateService(IServiceProvider serviceProvider, IStore<Product> productStore, IStore<Rebate> rebateStore)
-    {
-        _serviceProvider = serviceProvider;
+	{
+		_serviceProvider = serviceProvider;
 		_productStore = productStore;
 		_rebateStore = rebateStore;
 	}
@@ -41,7 +41,7 @@ public class RebateService : IRebateService
 	#region Rebates
 	public async Task<Rebate> AddRebate(Rebate rebate)
 	{
-        return await _rebateStore.Save(rebate);
+		return await _rebateStore.Save(rebate);
 	}
 
 	public Task<IEnumerable<Rebate>> ListRebates()
@@ -51,41 +51,41 @@ public class RebateService : IRebateService
 	#endregion Rebates
 
 	public async Task<CalculateRebateResult> CalculateRebate(CalculateRebateRequest request)
-    {
-        if (string.IsNullOrWhiteSpace(request.RebateIdentifier) || string.IsNullOrWhiteSpace(request.ProductIdentifier))
-        {
-            return new CalculateRebateResult { Success = false };
-        }
+	{
+		if (string.IsNullOrWhiteSpace(request.RebateIdentifier) || string.IsNullOrWhiteSpace(request.ProductIdentifier))
+		{
+			return new CalculateRebateResult { Success = false };
+		}
 
-        Rebate? rebate = await _rebateStore.Get(request.RebateIdentifier);
-        Product? product = await _productStore.Get(request.ProductIdentifier);
+		Rebate? rebate = await _rebateStore.Get(request.RebateIdentifier);
+		Product? product = await _productStore.Get(request.ProductIdentifier);
 
-        if (rebate == null || product == null)
-        {
-            return new CalculateRebateResult { Success = false };
-        }
+		if (rebate == null || product == null)
+		{
+			return new CalculateRebateResult { Success = false };
+		}
 
-        // Checking a collection of supported incentive types allows for
-        // larger set of incentives to be supported than the 32 in the
-        // original implementation.
+		// Checking a collection of supported incentive types allows for
+		// larger set of incentives to be supported than the 32 in the
+		// original implementation.
 		if (!product.SupportedIncentives.Contains(rebate.Incentive))
 		{
 			return new CalculateRebateResult { Success = false };
 		}
-		
-        var calculator = _serviceProvider.GetRebateCalculator(rebate.Incentive);
-        if (calculator == null)
-        {
+
+		var calculator = _serviceProvider.GetRebateCalculator(rebate.Incentive);
+		if (calculator == null)
+		{
 			return new CalculateRebateResult { Success = false };
 		}
 
 		var result = calculator.CalculateRebate(rebate, product, request);
-        if (result.Success)
-        {
-            rebate.AmountAwarded = result.RebateAmount;
-            await _rebateStore.Save(rebate);
+		if (result.Success)
+		{
+			rebate.AmountAwarded = result.RebateAmount;
+			await _rebateStore.Save(rebate);
 		}
 
-        return result;
-    }
+		return result;
+	}
 }
