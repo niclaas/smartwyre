@@ -16,7 +16,10 @@ public class RebateService : IRebateService
 
 	public RebateService(IServiceProvider serviceProvider, IStore<Product> productStore, IStore<Rebate> rebateStore)
 	{
+		// should really not depend on the service provider here, but implemented with KeyedService
+		// with IncentiveType because I'm out of time.
 		_serviceProvider = serviceProvider;
+
 		_productStore = productStore;
 		_rebateStore = rebateStore;
 	}
