@@ -1,0 +1,47 @@
+﻿{
+  "products": [
+    {
+      "description": "Cable - Coax 50ohm",
+      "price": 1.5,
+      "uom": "m",
+      "supportedIncentives": [
+        "AmountPerUom",
+        "FixedCashAmount",
+        "FixedRateRebate"
+      ]
+    },
+    {
+      "description": "Cable - Optic",
+      "price": 30,
+      "uom": "m",
+      "supportedIncentives": [
+        "FixedCashAmount"
+      ]
+    },
+    {
+      "description": "Cable - Ethernet",
+      "price": 0.70,
+      "uom": "m",
+      "supportedIncentives": [
+        "FixedRateRebate"
+      ]
+    }
+  ],
+  "rebates": [
+    {
+      "incentive": "FixedRateRebate",
+      "amount": 20.0,
+      "percentage": 0.2
+    },
+    {
+      "incentive": "AmountPerUom",
+      "amount": 10.0,
+      "percentage": 0.1
+    },
+    {
+      "incentive": "FixedCashAmount",
+      "amount": 5.0,
+      "percentage": 0.05
+    }
+  ]
+}    
