@@ -19,9 +19,10 @@ try
 			serviceCollection.AddHostedService<TestRunnerService>();
 
 			serviceCollection.AddScoped<IRebateService, RebateService>();
-			serviceCollection.AddKeyedScoped<IRebateCalculator, AmountPerUomRebateCalculator>(IncentiveType.AmountPerUom);
-			serviceCollection.AddKeyedScoped<IRebateCalculator, FixedCashRebateCalculator>(IncentiveType.FixedCashAmount);
-			serviceCollection.AddKeyedScoped<IRebateCalculator, FixedRateRebateCalculator>(IncentiveType.FixedRateRebate);
+			serviceCollection.AddScoped<IRebateCalculator, AmountPerUomRebateCalculator>();
+			serviceCollection.AddScoped<IRebateCalculator, FixedCashRebateCalculator>();
+			serviceCollection.AddScoped<IRebateCalculator, FixedRateRebateCalculator>();
+			serviceCollection.AddScoped<IRebateCalculatorSelector, RebateCalculatorSelector>();
 
 			serviceCollection.AddSingleton<IStore<Product>, Store<Product>>();
 			serviceCollection.AddSingleton<IStore<Rebate>, Store<Rebate>>();
